@@ -1,0 +1,41 @@
+<div
+  class="bg-black bg-opacity-10 fixed top-0 left-0 h-screen w-screen z-10 flex items-center justify-center"
+>
+  <div
+    class="rounded-lg shadow bg-white p-4 flex flex-col justify-center items-center space-y-4"
+  >
+    <span class="text-2xl font-bold"
+      >Evaluar Pago de
+      <span class="font-bold">{{ voucher.codigo_solicitud }}</span></span
+    >
+    <div *ngIf="voucher.voucher">
+      <div class="space-x-4">
+        <span>Tasa:</span> <span>{{ voucher.tasa }}</span>
+      </div>
+      <div class="space-x-4">
+        <span>Voucher:</span>
+        <button
+          class="w-6 h-6 rounded shadow bg-yellow-600 text-white font-bold"
+          (click)="openFile(voucher.voucher)"
+        >
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+    </div>
+    <div class="space-x-4 flex justify-center">
+      <button
+        (click)="validarPago()"
+        class="rounded-full px-4 py-1 bg-green-600 text-white font-bold"
+        [ngClass]="isValidating ? 'animate-pulse' : ''"
+      >
+        {{ isValidating ? "Validando" : "Validar" }}
+      </button>
+      <button
+        (click)="closeModal(false)"
+        class="rounded-full px-4 py-1 bg-red-600 text-white font-bold"
+      >
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

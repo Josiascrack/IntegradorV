@@ -1,0 +1,258 @@
+<div
+  class="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-10 p-4 z-10 flex justify-center items-center"
+>
+  <div
+    class="bg-white px-8 py-4 shadow rounded-lg w-1/2 relative space-y-2 text-xs"
+  >
+    <button
+      class="absolute right-2 top-2 rounded-full bg-gray-200 w-5 h-5"
+      (click)="closeModal()"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="w-full border-1 border-gray-500">
+      <div class="w-full bg-blue-500 text-white px-4 py-2 text-lg">
+        Datos de Solicitud
+      </div>
+      <div class="p-2">
+        <div class="grid grid-cols-12 gap-2">
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Tipo de Contribuyente</span>
+            <span class="">{{ solicitud.tipo_contribuyente }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">RUC</span>
+            <span class="">{{ solicitud.ruc }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Razon Social</span>
+            <span class="capitalize">{{
+              solicitud.razon_social.toLowerCase()
+            }}</span>
+          </div>
+          <div class="col-span-8 flex flex-col">
+            <span class="font-bold">Direccion</span>
+            <span class="">{{ solicitud.direccion_contribuyente }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Distrito</span>
+            <span class="">{{ solicitud.distrito }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Provincia</span>
+            <span class="">{{ solicitud.provincia }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Departamento</span>
+            <span class="">{{ solicitud.departamento }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Regimen Tributario</span>
+            <span class="">{{ solicitud.reg_tributario }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Direccion Notificacion</span>
+            <span class="">{{ solicitud.notif_direccion }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Distrito Notificacion</span>
+            <span class="">{{ solicitud.notif_distrito }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Correo Electronico</span>
+            <span class="">{{ solicitud.correo }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Telefono</span>
+            <span class="">{{ solicitud.telefono }}</span>
+          </div>
+          <div class="col-span-12 flex justify-end">
+            <button
+              class="rounded-full bg-red-900 text-white font-bold px-4 py-1"
+              (click)="verDocumentos()"
+            >
+              Ver documentos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full border-1 border-gray-500">
+      <div class="w-full bg-blue-500 text-white px-8 py-2 text-lg">
+        Datos de Establecimiento
+      </div>
+      <div class="p-2">
+        <div class="grid grid-cols-12 gap-2">
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Direccion Establecimiento</span>
+            <span class="">{{ solicitud.direccion_establecimiento }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Numero</span>
+            <span class="">{{ solicitud.numero }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Letra</span>
+            <span class="">{{ solicitud.letra }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Int</span>
+            <span class="">{{ solicitud.interior }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Let Int</span>
+            <span class="">{{ solicitud.interior_let }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Mz</span>
+            <span class="">{{ solicitud.mz }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Lt</span>
+            <span class="">{{ solicitud.lote }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Bloque</span>
+            <span class="">{{ solicitud.bloque }}</span>
+          </div>
+          <div class="col-span-1 flex flex-col">
+            <span class="font-bold">Dpto</span>
+            <span class="">{{ solicitud.dpto }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Nucleo Urbano</span>
+            <span class="">{{ solicitud.urb }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Tipo Predio</span>
+            <span class="">{{ solicitud.tipo_predio }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Clasificacion</span>
+            <span class="">{{ solicitud.clasificacion }}</span>
+          </div>
+
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Zonificacion</span>
+            <span class="">{{ solicitud.zonificacion }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Nombre Comercial</span>
+            <span class="">{{ solicitud.nombre_comercial }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Area Total m2</span>
+            <span class="">{{ solicitud.area_local }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Aforo</span>
+            <span class="">{{ solicitud.aforo }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Antiguedad</span>
+            <span class="">{{ solicitud.antiguedad }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Referencia</span>
+            <span class="">{{ solicitud.referencia }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">Cantidad Empleados</span>
+            <span class="">{{ solicitud.empleados }}</span>
+          </div>
+          <div class="col-span-4 flex flex-col">
+            <span class="font-bold">N° Pisos</span>
+            <span class="">{{ solicitud.pisos }}</span>
+          </div>
+          <div class="col-span-12 flex justify-end space-x-4">
+            <button
+              class="rounded-full bg-red-900 text-white font-bold px-4 py-1"
+              button
+              (click)="verGiros()"
+            >
+              Giros
+            </button>
+            <button
+              class="rounded-full bg-red-900 text-white font-bold px-4 py-1"
+              (click)="verPisos()"
+            >
+              Pisos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center space-x-2">
+      <button
+        *ngIf="solicitud.id_solestado == 1"
+        class="rounded-full bg-green-600 text-white font-bold px-4 py-1"
+        (click)="validarSolicitud()"
+      >
+        Validar
+      </button>
+      <button
+        *ngIf="solicitud.id_solestado == 2"
+        class="rounded-full bg-green-600 text-white font-bold px-4 py-1"
+        (click)="evaluarSolicitud()"
+      >
+        Evaluar
+      </button>
+      <button
+        *ngIf="solicitud.id_solestado == 1"
+        class="rounded-full bg-red-600 text-white font-bold px-4 py-1"
+        (click)="rechazarSolicitud()"
+      >
+        Rechazar
+      </button>
+      <button
+        *ngIf="solicitud.id_solestado == 4"
+        class="rounded-full bg-green-600 text-white font-bold px-4 py-1"
+        (click)="validarPago()"
+      >
+        Validar Pago
+      </button>
+    </div>
+  </div>
+</div>
+<app-rechazar-solicitud
+  [id_solicitud]="solicitud.id_solicitud"
+  (closed)="cerrarModal()"
+  *ngIf="isRechazarSolicitudOpen"
+>
+</app-rechazar-solicitud>
+
+<app-mostrar-giros
+  *ngIf="isGirosOpen"
+  (closed)="cerrarModal()"
+  [id_establecimiento]="solicitud.id_establecimiento"
+></app-mostrar-giros>
+<app-mostrar-pisos
+  *ngIf="isPisosOpen"
+  (closed)="cerrarModal()"
+  [id_establecimiento]="solicitud.id_establecimiento"
+></app-mostrar-pisos>
+
+<app-mostrar-documentos
+  *ngIf="isDocumentosOpen"
+  (closed)="cerrarModal()"
+  [id_solicitud]="solicitud.id_solicitud"
+  [codigo]="solicitud.codigo_solicitud"
+></app-mostrar-documentos>
+
+<app-validar-solicitud
+  [id_solicitud]="solicitud.id_solicitud"
+  (closed)="cerrarValidacion($event)"
+  *ngIf="isValidarOpen"
+></app-validar-solicitud>
+
+<app-evaluar-riesgo
+  *ngIf="isRiesgoOpen"
+  (closed)="cerrarEvaluacion($event)"
+  [id_solicitud]="solicitud.id_solicitud"
+></app-evaluar-riesgo>
+<app-validar-pago-modal
+  *ngIf="isValidarPagoOpen"
+  (closed)="cerrarPago($event)"
+  [codigo]="solicitud.codigo_solicitud"
+></app-validar-pago-modal>

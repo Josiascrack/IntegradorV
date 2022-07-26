@@ -1,0 +1,314 @@
+<div
+  class="container-sm shadow-sm bg-body rounded mx-auto"
+  style="max-width: 1500px; height: auto"
+>
+  <div class="row">
+    <div
+      class="col-12 fs-5 bd-highlight"
+      style="background-color: #0167a7; color: white"
+    >
+      3. Datos del Establecimiento
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="establecimientoForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Dirección del Establecimiento
+              <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="direccionEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">Número </label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="numeroEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">Letra</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="letraEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">INT.</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="intEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">LET.INT.</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="letintEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">Mz.</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="mzEstablecimiento"
+              maxlength="1"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">Lote</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="loteEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">Bloque</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="bloqueEstablecimiento"
+            />
+          </div>
+          <div class="col-1">
+            <label for="exampleInputEmail1" class="form-label">DPTO</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="dptoEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Nucleo Urbano (AAHH,URB,...)
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="nucleoEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Tipo Predio</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="tipoEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Clasificación</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="clasificacionEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="disabledSelect" class="form-label">Zonificación</label>
+
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="zonificacionEstablecimiento"
+            />
+          </div>
+          <!-- <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Área del Local Utilizado (m2)</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div> -->
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Capacidad de Aforo N° <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="aforoEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Antiguedad de la Edificación (años)
+              <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="antiguedadEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Nombre Comercial <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="nomComercialEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Cantidad de Empleados <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="nEmpleadosEstablecimiento"
+            />
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Referencia</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="1"
+              formControlName="referenciaEstablecimiento"
+            ></textarea>
+          </div>
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >N.° de pisos <span class="text-red-600">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="nPisosEstablecimiento"
+              (input)="calcularPisos($event.target)"
+            />
+          </div>
+
+          <div class="col-4 table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">N.° Piso</th>
+                  <th scope="col">Área</th>
+                  <th scope="col">Medida</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of pisos; let i = index; trackBy: trackByFn">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      style="width: 80px"
+                      [value]="p"
+                      (input)="tableValue($event.target, i)"
+                    />
+                  </td>
+                  <td>m2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-4">
+            <label for="exampleInputEmail1" class="form-label"
+              >Area Total</label
+            >
+            {{ getTotal() }}
+          </div>
+          <div class="errors px-2" *ngIf="ifErrors()">
+            <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg my-3">
+              <div *ngIf="getErrors()?.required">Valores Requeridos Vacios</div>
+              <div *ngIf="getErrors()?.email">Formato de email Incorrecto</div>
+              <div *ngIf="getErrors()?.phoneNumber">
+                Formato de numero telefonico Incorrecto
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-2 mb-2"
+            style="display: flex; justify-content: space-between"
+          >
+            <button type="button" class="btn btn-danger" (click)="goHome()">
+              Cancelar
+            </button>
+            <div>
+              <button
+                type="button"
+                class="btn btn-info"
+                style="margin-right: 4px"
+                (click)="goBack()"
+              >
+                Atras
+              </button>
+              <button
+                type="submit"
+                class="btn btn-success"
+                style="margin-left: 4px"
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

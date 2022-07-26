@@ -1,0 +1,10 @@
+<div
+  class="pt-24 pr-8 overflow-y-auto"
+  [ngClass]="sideIsOpen ? ' sm:pl-64' : 'pl-8'"
+>
+  <router-outlet></router-outlet>
+</div>
+<app-sidebar [sidebarIsOpen]="sideIsOpen"></app-sidebar>
+<app-navbar (toggleEvent)="isToggled()"></app-navbar>
+
+

@@ -1,0 +1,66 @@
+<div
+  style="
+    background-image: url(./assets/img/usuari.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  "
+>
+  <div class="h-screen w-screen flex items-center justify-end pr-48">
+    <div class=" w-96 rounded-lg text-black" style="background-color: #0167a7">
+      <div class="relative pt-16 pb-4 px-8">
+        <div class="w-full flex justify-center">
+          <img
+            src="./assets/img/logomunicipalidad.png"
+            alt="logo"
+            class="absolute -top-16 w-32"
+          />
+        </div>
+
+        <div class="text-center">
+          <h4 class="mt-1 mb-4 pb-1 text-lg font-bold" style="color: white">
+            Iniciar Sesión
+          </h4>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- <p style="color: white">Por favor, ingrese a su cuenta</p> -->
+
+          <div class="form-outline mb-4">
+            <input
+              type="email"
+              id="username"
+              class="form-control"
+              formControlName="username"
+              placeholder="Nombre de usuario"
+            />
+            <label class="form-label" for="form2Example11"></label>
+          </div>
+
+          <div class="form-outline mb-4 relative flex flex-row items-center">
+            <input
+              [type]="isVisible ? 'text' : 'password'"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Contraseña"
+            />
+            <button type="button" (click)="isVisible = !isVisible" class="absolute right-2">
+              <i
+                class="fa-solid"
+                [ngClass]="isVisible ? 'fa-eye-slash' : 'fa-eye'"
+              ></i>
+            </button>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-success btn-block fa-lg" type="submit">
+              Iniciar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

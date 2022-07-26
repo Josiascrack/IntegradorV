@@ -1,0 +1,8 @@
+<div class="sidebar w-56 top-20 h-screen fixed py-4 px-2" [ngClass]="sidebarIsOpen ? 'left-0' : '-left-56'">
+  <ul *ngIf="modules.length >= 0">
+    <li *ngFor="let m of modules" (click)="routeToMenu(m.ruta)">{{ m.nombre }}</li>
+  </ul>
+  <div class="h-100" style="display:  flex; justify-content: center; align-items: center;" *ngIf="modules.length == 0">
+    <i class="fa-solid fa-spinner rotating" style="font-size: 32px;"></i>
+  </div>
+</div>

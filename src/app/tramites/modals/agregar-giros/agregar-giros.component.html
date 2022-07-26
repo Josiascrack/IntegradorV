@@ -1,0 +1,116 @@
+<div
+  class="modal fade text-center"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" style="height: auto">
+    <div class="modal-content">
+      <div class="modal-header p-1 justify-content-center">
+        <p class="fw-bolder mb-1 fs-5">AGREGAR GIROS</p>
+      </div>
+
+      <div class="modal-body text">
+        <div class="">
+          <div class="input-group input-group-sm mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Código"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              [(ngModel)]="codeToSearch"
+            />
+    
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              [(ngModel)]="descriptionToSearch"
+
+            />
+       
+          </div>
+        </div>
+
+
+
+        <div>Seleccionados {{ selectedActividadesEconomicas.length }}/3</div>
+
+        <div class="table-responsive" style="max-height: 320px">
+          <table
+            class="table g-3 ml-1 table-sm table-striped table-bordered table-borderless"
+          >
+            <thead style="background-color: #1a78a8; color: white">
+              <tr>
+                <th scope="col">ELEGIR</th>
+                <th scope="col">CÓDIGO</th>
+                <th scope="col">DESCRIPCIÓN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let ae of actividadesEconomicas
+                    | filter: 'codigo':codeToSearch | filter: 'nombre':descriptionToSearch
+                "
+              >
+                <th scope="row">
+                  <input
+                    [checked]="
+                      selectedActividadesEconomicas.includes(ae.id_acteconomico)
+                    "
+                    class="form-check-input"
+                    type="checkbox"
+                    id="gridCheck1"
+                    (change)="
+                      seleccionarCositas(
+                        $event.target,
+                        ae.id_acteconomico
+                      )
+                    "
+                  />
+                </th>
+                <td>{{ ae.codigo }}</td>
+                <td>{{ ae.nombre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div
+        class="btn-toolbar justify-content-between p-2"
+        role="toolbar"
+        aria-label="Toolbar with button groups"
+      >
+        <div class="input-group">
+          <button
+            class="btn btn-danger rounded-pill mb-1"
+            type="button"
+            style="font-size: 12px"
+            data-bs-dismiss="modal"
+          >
+            CANCELAR
+          </button>
+        </div>
+
+        <div class="input-group">
+          <button
+            class="btn btn-success rounded-pill mb-1"
+            type="button"
+            style="font-size: 12px"
+            data-bs-dismiss="modal"
+          >
+            ACEPTAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

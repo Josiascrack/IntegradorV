@@ -1,0 +1,86 @@
+<div
+  class="barranavegacioninicio mb-2 mt-0"
+  style="background-color: #0167a7; color: white; text-align: center"
+>
+  Consultar Estado
+</div>
+
+<div
+  class="container-sm shadow-sm p-20 mb-5 bg-body rounded m-5 mx-auto"
+  style="max-width: 800px; height: auto"
+>
+  <div class="row">
+    <div
+      class="col-12 fs-5 bd-highlight"
+      style="background-color: #0167a7; color: white"
+    >
+      Detalles
+    </div>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Codigo Solicitud</th>
+            <th scope="col">Tipo de Solicitud</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ solicitud.codigo_solicitud }}</th>
+            <td>{{ solicitud.tipotramite }}</td>
+            <td>{{ solicitud.estado_nombre }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nivel de Riesgo</th>
+            <th scope="col">Tasa de Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ solicitud.riesgo_nombre }}</td>
+            <td>S/.{{ solicitud.tasa }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mb-2" style="display: flex; justify-content: space-between">
+      <button type="button" class="btn btn-info" (click)="goHome()">
+        Volver a la pagina de Inicio
+      </button>
+      <div>
+        <button
+          type="button"
+          class="btn btn-info"
+          style="margin-right: 4px"
+          (click)="goBack()"
+        >
+          Atras
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          style="margin-left: 4px"
+          (click)="goNext()"
+        >
+          Proceder con el pago
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-subir-voucher
+  [codigo]="solicitud.codigo_solicitud"
+  (closed)="closedModal($event)"
+  *ngIf="isUploadOpen"
+></app-subir-voucher>

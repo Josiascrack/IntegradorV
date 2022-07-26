@@ -1,0 +1,64 @@
+<div>
+  <div class="row align-items-start">
+    <div class="col">
+      <h2 class="text-2xl font-bold">Validar Solicitud</h2>
+    </div>
+    <div class="col">
+      <input
+        [(ngModel)]="searchRUC"
+        class="form-control me-2"
+        type="search"
+        placeholder="Busqueda por RUC"
+        aria-label="Search"
+      />
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="solicitudes.length == 0" class="p-4">
+      <div class="blankDiv">No hay Registros Disponibles, Vuelva Mas Tarde</div>
+    </div>
+    <div class="table-responsive" *ngIf="solicitudes.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">RUC</th>
+            <th scope="col">Tipo Tramite</th>
+            <th scope="col">Razon Social</th>
+            <th scope="col">Regimen Tributario</th>
+            <th scope="col">Tipo Predio</th>
+            <th scope="col">Clas.</th>
+            <th scope="col">Zon</th>
+            <th scope="col">Elegir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of solicitudes | search: 'ruc':searchRUC">
+            <td>{{ item.ruc }}</td>
+            <td>{{ item.tipotramite }}</td>
+            <td>{{ item.razon_social }}</td>
+            <td>{{ item.reg_tributario }}</td>
+            <td>{{ item.tipo_predio }}</td>
+            <td>{{ item.clasificacion }}</td>
+            <td>{{ item.zonificacion }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="infoSelected(item.id_solicitud)"
+              >
+                Info
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-informacion-solicitud
+  *ngIf="infoIsOpen"
+  [solicitud]="selectedSolicitud"
+  (closed)="closeModal()"
+></app-informacion-solicitud>

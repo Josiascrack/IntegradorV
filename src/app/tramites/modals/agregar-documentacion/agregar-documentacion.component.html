@@ -1,0 +1,90 @@
+<div
+  class="modal fade text-center"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    style="width: 100%; height: auto"
+  >
+    <div class="modal-content">
+      <div class="modal-header p-1 justify-content-center">
+        <p class="fw-bolder mb-1 fs-5">AÑADIR DOCUMENTACIÓN</p>
+      </div>
+
+      <div class="modal-body text">
+        <div class="mb-3">
+          <label for="inputState" class="form-label">TIPO DOCUMENTO</label>
+          <select id="inputState " class="form-select" [(ngModel)]="selectedTipo">
+            <option selected value="0">SELECCIONAR</option>
+            <option *ngFor="let td of tiposDocumento" [value]="td.id_tipodoc">{{ td.nombre }}</option>
+          </select>
+        </div>
+        <div>
+          <label
+            class="btn btn-success rounded-pill mb-0"
+            type="button"
+            style="font-size: 12px; background-color: #8e1a45; color: white"
+            for="inputGroupFile02"
+          >
+            CARGAR ARCHIVO | +
+          </label>
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            (change)="chooseFile($event)"
+            hidden
+          />
+
+          <p class="fw-bolder" style="font-size: 12px">{{ getFileName() }}</p>
+        </div>
+      </div>
+
+      <!-- <div class="d-grid gap-2 mb-0 p-0 col-5 mx-auto">
+        <button
+          class="btn btn-success rounded-pill mb-2"
+          type="button"
+          style="font-size: 12px"
+        >
+          ACEPTAR
+        </button>
+        <p class="fw-bolder" style="font-size: 12px">
+          ASEGURESE DE QUE LOS DATOS SEAN CORRECTOS
+        </p>
+      </div> -->
+
+      <div
+        class="btn-toolbar justify-content-between p-2"
+        role="toolbar"
+        aria-label="Toolbar with button groups"
+      >
+        <div class="input-group">
+          <button
+            class="btn btn-danger rounded-pill mb-1"
+            type="button"
+            style="font-size: 12px"
+            data-bs-dismiss="modal"
+            (click)="cerrarModal()"
+          >
+            CANCELAR
+          </button>
+        </div>
+
+        <div class="input-group">
+          <button
+            class="btn btn-success rounded-pill mb-1"
+            type="button"
+            style="font-size: 12px; background-color: #158e92; color: white"
+            data-bs-dismiss="modal"
+            (click)="saveFile()"
+          >
+            GUARDAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

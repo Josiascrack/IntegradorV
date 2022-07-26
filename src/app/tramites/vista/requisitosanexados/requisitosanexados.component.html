@@ -1,0 +1,173 @@
+<div
+  class="container-sm shadow-sm p-20 bg-body rounded mx-auto"
+  style="width: 800px; height: auto"
+>
+  <div class="row">
+    <div
+      class="col-12 fs-5 bd-highlight"
+      style="background-color: #0167a7; color: white"
+    >
+      5. Requisitos y/o Documentos Anexados a Solicitud
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12" style="background-color: rgb(255, 255, 255)">
+      <form>
+        <div class="row">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              padding-top: 8px;
+            "
+          >
+            <button
+              type="button"
+              class="btn btn-indigo-600"
+              style="color: white; background-color: #ab296a"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <i class="fa-solid fa-plus"></i> Documentación
+            </button>
+
+            <div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="margin-right: 4px"
+              >
+                Anexo 02
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="margin-left: 4px"
+              >
+                Declaración Jurada
+              </button>
+            </div>
+          </div>
+          <!-- <div *ngIf="savedFiles.length == 0" class="p-4">
+            <div class="blankDiv">Seleccione un archivo para continuar</div>
+          </div> -->
+          <!-- <div class="table-responsive" *ngIf="savedFiles.length > 0">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Archivo</th>
+                  <th scope="col">Tipo Archivo</th>
+                  <th scope="col">Tipo Documento</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of savedFiles; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ item.file.name }}</td>
+                  <td>{{ item.file.type }}</td>
+                  <td>{{ getTipoName(item.tipo) }}</td>
+
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      (click)="deleteFile(i)"
+                    >
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
+          <!-- Nueva Tabla-->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">N°</th>
+                  <th scope="col">Tipo Documento</th>
+                  <th scope="col">Archivo</th>
+                  <th scope="col">Tipo Archivo</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tiposDocumento; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ item.nombre }}</td>
+                  <td>{{ item.file ? item.file.name : "Seleccione uno" }}</td>
+                  <td>{{ item.file ? item.file.type : "Seleccione uno" }}</td>
+
+                  <td class="flex">
+                    <label
+                      [for]="'upFile' + i"
+                      class="btn btn-outline-success btn-sm"
+                      *ngIf="!item.file"
+
+                    >
+                      <i class="fa-solid fa-upload"></i>
+                    </label>
+                    <input
+                      type="file"
+                      [id]="'upFile' + i"
+                      class="hidden"
+                      (change)="fileChanged(i, $event.target)"
+                    />
+                    <button
+                      *ngIf="item.file"
+                      type="button"
+                      class="btn btn-outline-danger btn-sm"
+                      (click)="deleteFile(i)"
+                    >
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Nueva Tabla-->
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 8px;
+            "
+          >
+            <button type="button" class="btn btn-danger" (click)="goHome()">
+              Cancelar
+            </button>
+            <div>
+              <button
+                type="button"
+                class="btn btn-info"
+                style="margin-right: 4px"
+                (click)="goBack()"
+              >
+                Atras
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                style="margin-left: 4px"
+                (click)="goNext()"
+              >
+                Finalizar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-agregar-documentacion
+  (selectedFile)="savingSelectedFile($event)"
+  [tiposDocumento]="getTiposOfSavedFiles()"
+></app-agregar-documentacion>

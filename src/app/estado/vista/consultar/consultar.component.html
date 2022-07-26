@@ -1,0 +1,73 @@
+<div
+  class="barranavegacioninicio mb-2 mt-0"
+  style="background-color: #0167a7; color: white; text-align: center"
+>
+  Consultar Estado
+</div>
+
+<div
+  class="container-sm shadow-sm p-20 mb-5 bg-body rounded m-5 mx-auto"
+  style="max-width: 800px; height: auto"
+>
+  <div class="row">
+    <div
+      class="col-12 fs-5 bd-highlight"
+      style="background-color: #0167a7; color: white"
+    >
+      Consultar
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex mt-2">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar"
+        aria-label="Search"
+        [(ngModel)]="codigo"
+      />
+      <button
+        class="btn btn-outline-success"
+        type="submit"
+        (click)="searchByCodigo()"
+      >
+        Buscar
+      </button>
+    </div>
+    <div *ngIf="solicitudes.length == 0" class="p-4">
+      <div class="blankDiv " [ngClass]="isSearching ? 'animate-bounce' :''">Busque un Codigo para consultar su estado.</div>
+    </div>
+    <div class="table-responsive" *ngIf="solicitudes.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">N° Solicitud</th>
+            <th scope="col">Tipo de Solicitud</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of solicitudes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ s.tipotramite }}</td>
+            <td>{{ s.nombre }}</td>
+            <td>
+              <button *ngIf="s.id_solestado==3" class="rounded shadow bg-green-600 text-white w-8 h-8" (click)="goToUpload()"><i class="fa-solid fa-upload"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mb-2">
+      <button
+        type="button"
+        class="btn btn-info"
+        style="justify-content: center"
+        (click)="goBack()"
+      >
+        Volver a la Pagina de inicio
+      </button>
+    </div>
+  </div>
+</div>

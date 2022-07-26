@@ -1,0 +1,90 @@
+<div
+  class="container-sm shadow-sm p-20 bg-body rounded mx-auto"
+  style="width: 800px; height: auto"
+>
+  <div class="row">
+    <div
+      class="col-12 fs-5 bd-highlight"
+      style="background-color: #0167a7; color: white"
+    >
+      4. Actividades Económicas
+    </div>
+  </div>
+  <div class="row">
+    <div style="padding-top: 8px">
+      <button
+        type="button"
+        class="btn btn-indigo-600"
+        style="color: white; background-color: #ab296a"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="fa-solid fa-plus"></i> Giros
+      </button>
+    </div>
+    <div *ngIf="selectedActividadesEconomicas.length == 0" class="p-4">
+      <div class=" blankDiv">
+        Seleccióne una actividad económica para poder ver giros.
+
+      </div>
+    </div>
+    <div *ngIf="selectedActividadesEconomicas.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">N.°</th>
+            <th scope="col">Giros</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gs of getSelected(); let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ gs.codigo }}</td>
+            <td>{{ gs.nombre }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="deleteSelected(gs.id_acteconomico)"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      style="display: flex; justify-content: space-between; padding-bottom: 8px"
+    >
+      <button type="button" class="btn btn-danger" (click)="goHome()">
+        Cancelar
+      </button>
+      <div>
+        <button
+          type="button"
+          class="btn btn-info"
+          style="margin-right: 4px"
+          (click)="goBack()"
+        >
+          Atras
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          style="margin-left: 4px"
+          (click)="goNext()"
+        >
+          Siguiente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-agregar-giros
+  [actividadesEconomicas]="actividadesEconomicas"
+  [selectedActividadesEconomicas]="selectedActividadesEconomicas"
+></app-agregar-giros>

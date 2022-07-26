@@ -1,0 +1,36 @@
+<div
+  class="barranavegacioninicio"
+  style="background-color: #0167a7; color: white; text-align: center"
+>
+  Solicitud de Licenciamiento
+</div>
+
+<div class="pt-4" style="padding-bottom: 80px">
+  <app-tipo-tramite
+    (getSubmit)="childItems($event)"
+    *ngIf="activeMenu == 1"
+    [preload]="data"
+  ></app-tipo-tramite>
+  <app-datossolicitante
+    (getSubmit)="childItems($event)"
+    *ngIf="activeMenu == 2"
+    [preload]="data"
+  ></app-datossolicitante>
+  <app-datosestablecimiento
+    (getSubmit)="childItems($event)"
+    *ngIf="activeMenu == 3"
+    [preload]="data"
+  ></app-datosestablecimiento>
+  <app-actividadeseconomicas
+    (getSubmit)="childItems($event)"
+    *ngIf="activeMenu == 4"
+    [preload]="data"
+  ></app-actividadeseconomicas>
+  <app-requisitosanexados
+    (getSubmit)="childItems($event)"
+    *ngIf="activeMenu == 5"
+    [preload]="data"
+  ></app-requisitosanexados>
+
+  <div class="rounded-lg shadow absolute right-2 bottom-2 z-10 bg-white px-4 py-2">{{ uploadStatus }} </div>
+</div>

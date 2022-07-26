@@ -1,0 +1,39 @@
+<div
+  class="bg-black/40 h-screen w-screen fixed top-0 left-0 z-10 flex items-center justify-center"
+>
+  <div class="bg-white rounded-lg px-4 py-4 w-96">
+    <h3 class="text-xl font-bold">Rechazar Solicitud</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="rechazoForm">
+      <div class="py-8">
+        <div class="w-full">
+          <textarea
+            placeholder="Ingresar Motivo"
+            type="text"
+            name="nombre"
+            id="nombre"
+            rows="4"
+            formControlName="motivo"
+            class="w-full resize-none focus:outline-none border rounded focus:border-blue-500 px-2 py-1"
+          ></textarea>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+        type="button"
+          class="rounded-full shadow bg-cyan-500 text-white px-2 py-1"
+          (click)="closeModal()"
+        >
+          Atras
+        </button>
+        <button
+        [ngClass]="isSavingUser ? 'animate-pulse' : ''"
+
+          type="submit"
+          class="rounded-full shadow bg-red-500 text-white px-2 py-1"
+        >
+          Rechazar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
