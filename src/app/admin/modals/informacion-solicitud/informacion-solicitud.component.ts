@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
+import { TipoContribuyenteEnum } from 'src/app/enums/tipo.contribuyente.enum';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 
 @Component({
   selector: 'app-informacion-solicitud',
@@ -15,6 +18,9 @@ export class InformacionSolicitudComponent implements OnInit {
   isRiesgoOpen: boolean = false;
   isValidarPagoOpen: boolean = false;
   isRechazarSolicitudOpen: boolean = false;
+  tipotramite=TipoTramiteEnum;
+  regimentributario=RegimenTributarioEnum;
+  tipocontribuyente=TipoContribuyenteEnum;
 
   constructor() {}
 
