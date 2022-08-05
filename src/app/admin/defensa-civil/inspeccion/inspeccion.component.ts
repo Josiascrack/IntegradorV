@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
   styleUrls: ['./inspeccion.component.css'],
 })
 export class InspeccionComponent implements OnInit {
+  tipoT = TipoTramiteEnum;
   solicitudes: any[] = [];
   selectedSolicitud: any;
   infoIsOpen = false;

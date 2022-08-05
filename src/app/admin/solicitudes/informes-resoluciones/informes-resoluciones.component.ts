@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
 @Component({
@@ -8,12 +9,14 @@ import { AdminService } from 'src/app/servicios/admin.service';
 })
 export class InformesResolucionesComponent implements OnInit {
   solicitudes: any[] = [];
+  tipoT = TipoTramiteEnum;
   searchRUC: string = '';
   selectedSolicitud: any;
   infoIsOpen = false;
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
+    console.log(TipoTramiteEnum[1]);
     this.getData();
   }
   getData() {

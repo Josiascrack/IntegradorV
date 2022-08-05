@@ -19,9 +19,12 @@ export class NavbarComponent implements OnInit {
     this.toggleEvent.emit();
   }
   logOut() {
-    this.authService.logOut();
+    this.authService.logOut().subscribe((data) => {
+      console.log(data);
+      this.router.navigate(['/login']);
+    });
   }
   getUser() {
-    return this.authService.getLoggedUserName();
+    return 'Juanito';
   }
 }

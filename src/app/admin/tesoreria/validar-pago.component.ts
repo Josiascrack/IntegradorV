@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
 export class ValidarPagoComponent implements OnInit {
   solicitudes: any[] = [];
   constructor(private adminService: AdminService) {}
+  tipoT = TipoTramiteEnum;
   selectedSolicitud: any;
   infoIsOpen = false;
   searchedString: string = '';

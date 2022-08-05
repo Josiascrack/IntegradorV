@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   constructor(private loginService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
-    this.loginService.getModules(this.loginService.getTokenPayload().usuario.rol).subscribe(data=>{
+    this.loginService.getModules().subscribe(data=>{
       this.modules = data
       this.routeToMenu(this.modules[0].ruta)
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
 })
 export class ValidarSolicitudesComponent implements OnInit {
   solicitudes: any[] = [];
+  tipoT = TipoTramiteEnum;
   selectedSolicitud: any;
   infoIsOpen = false;
   searchRUC: string = '';
@@ -29,6 +31,6 @@ export class ValidarSolicitudesComponent implements OnInit {
   }
   closeModal() {
     this.infoIsOpen = false;
-    this.getData()
+    this.getData();
   }
 }

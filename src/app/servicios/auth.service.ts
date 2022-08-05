@@ -9,48 +9,42 @@ import { apiURL } from './global';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
-
   logIn(user: any): Observable<any> {
-    return this.http.post<any>(`${apiURL}/auth/login`, user);
-  }
+    console.log(user);
 
-  saveToken(data: any) {
-    localStorage.setItem('token', data.accessToken);
-    localStorage.setItem('refreshToken', data.refreshToken);
-  }
-  getTokenPayload() {
-    const token = this.getToken();
-
-    if (token) {
-      return JSON.parse(atob(token.split('.')[1]));
-    }
-  }
-
-  getToken() {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      return token;
-    }
-
-    return this.logOut();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + btoa(user.username + ':' + user.password),
+    });
+    return this.http.post<any>(
+      `${apiURL}/auth/login`,
+      {},
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 
   logOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-    this.router.navigate(['/login']);
+    return this.http.post(
+      `${apiURL}/auth/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
   }
 
-  getModules(role: string): Observable<any> {
-    return this.http.get<any>(`${apiURL}/users/access/${role}`, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
+  getModules(): Observable<any> {
+    return this.http.get<any>(`${apiURL}/users/access`, {
+      withCredentials: true,
     });
   }
 
-  getLoggedUserName() {
-    return this.getTokenPayload().usuario.username;
+  getRefresh(): Observable<any> {
+    return this.http.post<any>(`${apiURL}/auth/refresh`, {
+      withCredentials: true,
+    });
   }
 }

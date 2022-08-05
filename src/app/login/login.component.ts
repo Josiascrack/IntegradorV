@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: AuthService,
     private toastr: ToastrService
-
   ) {}
 
   ngOnInit(): void {}
@@ -35,13 +34,13 @@ export class LoginComponent implements OnInit {
     this.loginForm.disable();
     this.loginService.logIn(this.loginForm.value).subscribe(
       (data: any) => {
-        this.loginService.saveToken(data);
+        console.log(data);
         this.router.navigate(['/admin']);
       },
       (err) => {
         this.toastr.error(err.error.message, 'Error');
-        this.loginForm.enable()
-        this.loginForm.reset()
+        this.loginForm.enable();
+        this.loginForm.reset();
         console.log(err.error.message);
       }
     );
