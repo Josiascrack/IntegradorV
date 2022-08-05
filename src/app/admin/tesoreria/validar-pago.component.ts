@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -11,6 +12,7 @@ export class ValidarPagoComponent implements OnInit {
   solicitudes: any[] = [];
   constructor(private adminService: AdminService) {}
   tipoT = TipoTramiteEnum;
+  regimenT = RegimenTributarioEnum;
   selectedSolicitud: any;
   infoIsOpen = false;
   searchedString: string = '';
@@ -25,7 +27,7 @@ export class ValidarPagoComponent implements OnInit {
   }
   getData() {
     this.adminService.getSolicitudesPagadas().subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.solicitudes = data;
     });
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -9,6 +10,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
 })
 export class InspeccionComponent implements OnInit {
   tipoT = TipoTramiteEnum;
+  regimenT = RegimenTributarioEnum;
   solicitudes: any[] = [];
   selectedSolicitud: any;
   infoIsOpen = false;
@@ -19,8 +21,6 @@ export class InspeccionComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
-
-  
 
   getData() {
     this.adminService.getSolicitudesInspeccion().subscribe((data) => {

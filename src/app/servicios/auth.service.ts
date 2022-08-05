@@ -42,6 +42,12 @@ export class AuthService {
     });
   }
 
+  getProfile(){
+    return this.http.post<any>(`${apiURL}/auth/me`, {
+      withCredentials: true,
+    });
+  }
+
   getRefresh(): Observable<any> {
     return this.http.post<any>(`${apiURL}/auth/refresh`, {
       withCredentials: true,

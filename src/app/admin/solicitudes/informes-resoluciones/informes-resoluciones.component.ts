@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -10,6 +11,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
 export class InformesResolucionesComponent implements OnInit {
   solicitudes: any[] = [];
   tipoT = TipoTramiteEnum;
+  regimenT = RegimenTributarioEnum
   searchRUC: string = '';
   selectedSolicitud: any;
   infoIsOpen = false;

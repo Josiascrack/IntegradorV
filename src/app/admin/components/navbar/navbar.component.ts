@@ -11,9 +11,12 @@ import { AuthService } from 'src/app/servicios/auth.service';
 export class NavbarComponent implements OnInit {
   @Output() toggleEvent = new EventEmitter();
   @Input() dropIsShowed: boolean = false;
+  user: any;
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUser();
+  }
 
   onToggle() {
     this.toggleEvent.emit();
@@ -25,6 +28,9 @@ export class NavbarComponent implements OnInit {
     });
   }
   getUser() {
-    return 'Juanito';
+    this.authService.getProfile().subscribe((data) => {
+      this.user = data;
+      console.log(this.user);
+    });
   }
 }

@@ -5,3 +5,12 @@
 /* .card {
     @apply bg-white  top-0 right-0 w-56 h-56 shadow;
 } */
+
+@layer base {
+    table > thead > tr > th {
+        @apply whitespace-nowrap;
+    }
+    table > tbody > tr > td {
+        @apply whitespace-nowrap;
+    }
+}

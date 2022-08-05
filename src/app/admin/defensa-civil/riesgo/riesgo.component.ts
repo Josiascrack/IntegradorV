@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -9,6 +10,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
 })
 export class RiesgoComponent implements OnInit {
   tipoT = TipoTramiteEnum;
+  regimenT = RegimenTributarioEnum;
   solicitudes: any[] = [];
   searchRUC: string = '';
   selectedSolicitud: any;
@@ -16,7 +18,7 @@ export class RiesgoComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.getData()
+    this.getData();
   }
   infoSelected(id: any) {
     this.selectedSolicitud = this.solicitudes.find(
@@ -28,7 +30,7 @@ export class RiesgoComponent implements OnInit {
     this.infoIsOpen = false;
     this.getData();
   }
-  getData(){
+  getData() {
     this.adminService.getSolicitudesValidadas().subscribe((data) => {
       this.solicitudes = data;
     });
