@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (err.status === 401) {
             console.log('getoutted');
             return this.authService.logOut().pipe(switchMap((data:any) => {
-              this.router.navigate(["/auth/login"])
+              this.router.navigate(["/login"])
               return next.handle(request);
             }));
           }
