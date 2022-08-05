@@ -10,6 +10,8 @@ import { ConsultasService } from 'src/app/servicios/consultas.service';
 })
 export class ValidarPagoModalComponent implements OnInit {
   isValidating: boolean = false;
+  isMotivoOpen: boolean = false;
+  motivo: string = '';
   @Input() codigo: any;
   @Output() closed: EventEmitter<boolean> = new EventEmitter();
   voucher: any = {};
@@ -33,7 +35,7 @@ export class ValidarPagoModalComponent implements OnInit {
     this.isValidating = true;
     this.adminService.validarPago(this.codigo).subscribe((data: any) => {
       this.isValidating = false;
-      this.toast.success("Pago validado correctamente");
+      this.toast.success('Pago validado correctamente');
       this.closeModal(true);
     });
   }
@@ -46,5 +48,17 @@ export class ValidarPagoModalComponent implements OnInit {
       `https://docs.google.com/viewerng/viewer?url=https://storage.googleapis.com/app-geslic.appspot.com/documents/vouchers/${this.codigo}/${url}`,
       '_blank'
     );
+  }
+  openMotivo() {
+    this.isMotivoOpen = true;
+  }
+  rechazarPago() {
+    this.adminService
+      .rechazarPago(this.codigo, this.motivo)
+      .subscribe((data) => {
+        this.toast.success('Pago rechazado correctamente');
+        this.isMotivoOpen = false;
+        this.closeModal(true);
+      });
   }
 }

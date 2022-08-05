@@ -2,8 +2,11 @@
   class="bg-black bg-opacity-10 fixed top-0 left-0 h-screen w-screen z-10 flex items-center justify-center"
 >
   <div
-    class="rounded-lg shadow bg-white p-4 flex flex-col justify-center items-center space-y-4"
+    class="relative rounded-lg shadow bg-white p-4 flex flex-col justify-center items-center space-y-4"
   >
+    <button (click)="closeModal(false)" class="absolute top-0 right-2">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <span class="text-2xl font-bold"
       >Evaluar Pago de
       <span class="font-bold">{{ voucher.codigo_solicitud }}</span></span
@@ -31,10 +34,34 @@
         {{ isValidating ? "Validando" : "Validar" }}
       </button>
       <button
-        (click)="closeModal(false)"
         class="rounded-full px-4 py-1 bg-red-600 text-white font-bold"
+        (click)="openMotivo()"
       >
-        Cancelar
+        Rechazar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="bg-black/20 flex justify-center items-center h-screen w-screen fixed top-0 left-0 z-20"
+  *ngIf="isMotivoOpen"
+>
+  <div class="bg-white p-4 shadow rounded-lg relative">
+    <button (click)="isMotivoOpen = false" class="absolute top-0 right-2">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="flex flex-col space-y-2 items-center">
+      <span class="text-2xl font-bold resize-none">Motivo Rechazo</span>
+      <textarea
+        [(ngModel)]="motivo"
+        class="rounded focus:outline-none w-full border focus:border-cyan-300"
+      ></textarea>
+      <button
+        class="rounded-full px-4 py-1 bg-red-600 text-white font-bold"
+        (click)="rechazarPago()"
+      >
+        Rechazar
       </button>
     </div>
   </div>

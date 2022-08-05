@@ -108,4 +108,10 @@ export class AdminService {
       motivo,
     });
   }
+
+  rechazarPago(id_solicitud: any, motivo: any) {
+    return this.http.put<any>(`${apiURL}/solicitud/pago/${id_solicitud}`, {
+      motivo,
+    });
+  }
 }
