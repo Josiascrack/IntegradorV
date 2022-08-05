@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TramitesService } from '../servicios/tramites.service';
 import { EstablecimientoDTO } from './models/establecimiento';
 import { SolicitanteDTO } from './models/solicitante';
@@ -13,10 +14,11 @@ import { SolcitudDTO } from './models/solicitud';
 export class TramitesComponent implements OnInit {
   activeMenu = 1;
   data: any = {};
-  uploadStatus: string = 'hola';
+  isUploading = false;
   constructor(
     private router: Router,
-    private tramitesServices: TramitesService
+    private tramitesServices: TramitesService,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -32,68 +34,82 @@ export class TramitesComponent implements OnInit {
     } else if (item.action == 'end') {
       this.data = { ...this.data, ...item.data };
       console.log(this.data);
-      this.uploadStatus = 'Subiendo Solicitantes';
-      this.tramitesServices
-        .insertSolicitante(new SolicitanteDTO(this.data as SolicitanteDTO))
-        .subscribe((solicitante) => {
-          this.uploadStatus = 'Subiendo Establecimiento';
+      this.isUploading = true;
+      const { savedFiles, ...rest } = this.data;
+      this.tramitesServices.uploadDocuments(rest, savedFiles).subscribe(
+        (data) => {
+          this.isUploading = false;
 
-          this.tramitesServices
-            .insertEstablecimiento(
-              new EstablecimientoDTO(this.data as EstablecimientoDTO),
-              solicitante[0]['id_contribuyente'],
-              this.data.pisos.reduce((a: any, b: any) => a + b, 0)
-            )
-            .subscribe((establecimiento) => {
-              this.uploadStatus = 'Subiendo Pisos';
+          this.toast.success('Solicitud subida con éxito');
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          this.isUploading = false;
 
-              this.tramitesServices
-                .insertPisosEstablecimiento(
-                  this.data.pisos,
-                  establecimiento[0]['id_establecimiento']
-                )
-                .subscribe((pisos) => {
-                  this.uploadStatus = 'Subiendo Actividad Economica';
+          this.toast.error('Error Al Realizar la solicitud ', err.message);
+        }
+      );
+      //   this.tramitesServices
+      //     .insertSolicitante(new SolicitanteDTO(this.data as SolicitanteDTO))
+      //     .subscribe((solicitante) => {
+      //       this.uploadStatus = 'Subiendo Establecimiento';
 
-                  this.tramitesServices
-                    .insertActividadesEconomicas(
-                      this.data.selectedActividadesEconomicas,
-                      establecimiento[0]['id_establecimiento']
-                    )
-                    .subscribe((actEc) => {
-                      this.uploadStatus = 'Subiendo Solicitud';
+      //       this.tramitesServices
+      //         .insertEstablecimiento(
+      //           new EstablecimientoDTO(this.data as EstablecimientoDTO),
+      //           solicitante[0]['id_contribuyente'],
+      //           this.data.pisos.reduce((a: any, b: any) => a + b, 0)
+      //         )
+      //         .subscribe((establecimiento) => {
+      //           this.uploadStatus = 'Subiendo Pisos';
 
-                      this.tramitesServices
-                        .insertSolicitud(
-                          new SolcitudDTO(this.data as SolcitudDTO),
-                          solicitante[0]['id_contribuyente'],
-                          establecimiento[0]['id_establecimiento']
-                        )
-                        .subscribe((solicitud) => {
-                          this.uploadStatus = 'Subiendo Archivos';
-                          console.log(solicitud);
-                          const formData = new FormData();
-                          this.data.savedFiles.forEach((element: any) => {
-                            formData.append(element.id_tipodoc, element.file);
-                          });
-                          this.tramitesServices
-                            .uploadDocuments(
-                              formData,
-                              solicitud['id_solicitud'],
-                              solicitud['codigo_solicitud']
-                            )
-                            .subscribe((data) => {
-                              this.uploadStatus = 'Finalizado';
+      //           this.tramitesServices
+      //             .insertPisosEstablecimiento(
+      //               this.data.pisos,
+      //               establecimiento[0]['id_establecimiento']
+      //             )
+      //             .subscribe((pisos) => {
+      //               this.uploadStatus = 'Subiendo Actividad Economica';
 
-                              console.log(data);
-                            });
-                        });
-                    });
-                });
-            });
-        });
+      //               this.tramitesServices
+      //                 .insertActividadesEconomicas(
+      //                   this.data.selectedActividadesEconomicas,
+      //                   establecimiento[0]['id_establecimiento']
+      //                 )
+      //                 .subscribe((actEc) => {
+      //                   this.uploadStatus = 'Subiendo Solicitud';
 
-      //this.router.navigate(['/']);
+      //                   this.tramitesServices
+      //                     .insertSolicitud(
+      //                       new SolcitudDTO(this.data as SolcitudDTO),
+      //                       solicitante[0]['id_contribuyente'],
+      //                       establecimiento[0]['id_establecimiento']
+      //                     )
+      //                     .subscribe((solicitud) => {
+      //                       this.uploadStatus = 'Subiendo Archivos';
+      //                       console.log(solicitud);
+      //                       const formData = new FormData();
+      //                       this.data.savedFiles.forEach((element: any) => {
+      //                         formData.append(element.id_tipodoc, element.file);
+      //                       });
+      //                       this.tramitesServices
+      //                         .uploadDocuments(
+      //                           formData,
+      //                           solicitud['id_solicitud'],
+      //                           solicitud['codigo_solicitud']
+      //                         )
+      //                         .subscribe((data) => {
+      //                           this.uploadStatus = 'Finalizado';
+
+      //                           console.log(data);
+      //                         });
+      //                     });
+      //                 });
+      //             });
+      //         });
+      //     });
+      // }
+      //
     }
   }
 }

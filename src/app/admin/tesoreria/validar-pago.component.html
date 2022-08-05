@@ -57,8 +57,9 @@
   </div>
 </div>
 
-<app-informacion-solicitud
-  *ngIf="infoIsOpen"
-  [solicitud]="selectedSolicitud"
-  (closed)="closeModal()"
-></app-informacion-solicitud>
+
+<app-validar-pago-modal
+*ngIf="infoIsOpen"
+[codigo]="selectedSolicitud.codigo_solicitud"
+(closed)="closeModal()"
+></app-validar-pago-modal>

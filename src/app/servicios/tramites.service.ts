@@ -41,13 +41,19 @@ export class TramitesService {
     );
   }
 
-  uploadDocuments(
-    formData: FormData,
-    id_solicitud: number,
-    codigo: string
-  ): Observable<any> {
+  uploadDocuments(data: any, files: any): Observable<any> {
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key]);
+    });
+
+    files.forEach((f: any) => {
+      const { id_tipodoc, file } = f;
+      formData.append(id_tipodoc, file);
+    });
+
     return this.http.post<any>(
-      `${apiURL}/files/documentos/${id_solicitud}/${codigo}`,
+      `${apiURL}/files/documentos/12/1212121212`,
       formData
     );
   }

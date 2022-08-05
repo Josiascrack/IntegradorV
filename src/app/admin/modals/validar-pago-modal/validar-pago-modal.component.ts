@@ -33,7 +33,7 @@ export class ValidarPagoModalComponent implements OnInit {
     this.isValidating = true;
     this.adminService.validarPago(this.codigo).subscribe((data: any) => {
       this.isValidating = false;
-      this.toast.success(data.message);
+      this.toast.success("Pago validado correctamente");
       this.closeModal(true);
     });
   }

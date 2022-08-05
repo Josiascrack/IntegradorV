@@ -25,6 +25,7 @@ export class ValidarPagoComponent implements OnInit {
   }
   getData() {
     this.adminService.getSolicitudesPagadas().subscribe((data) => {
+      console.log(data)
       this.solicitudes = data;
     });
   }

@@ -1,5 +1,5 @@
 <div
-  class="container-sm shadow-sm p-20 bg-body rounded mx-auto"
+  class="container-sm shadow-sm bg-body rounded mx-auto"
   style="width: 800px; height: auto"
 >
   <div class="row">
@@ -15,7 +15,8 @@
     <div class="row">
       <div class="mb-3">
         <label for="disabledSelect" class="form-label"
-          >Tipo de Licencia de Funcionamiento <span class="text-red-600">*</span></label
+          >Tipo de Licencia de Funcionamiento
+          <span class="text-red-600">*</span></label
         >
         <select
           id="disabledSelect"
@@ -28,7 +29,9 @@
         </select>
       </div>
       <div class="mb-3">
-        <label for="disabledSelect" class="form-label">Tipo de Tramite <span class="text-red-600">*</span></label>
+        <label for="disabledSelect" class="form-label"
+          >Tipo de Tramite <span class="text-red-600">*</span></label
+        >
         <select
           id="disabledSelect"
           class="form-select"
@@ -39,15 +42,10 @@
           <option value="1">Licencia de Funcionamiento</option>
         </select>
       </div>
-      <div class="errors px-2 " *ngIf="ifErrors()">
+      <div class="errors px-2" *ngIf="ifErrors()">
         <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg mb-3">
-          <div *ngIf="getErrors()?.required">
-            Valores Requeridos Vacios
-          </div>
-          <div *ngIf="getErrors()?.email">
-            Formato de email Incorrecto
-          </div>
-        
+          <div *ngIf="getErrors()?.required">Valores Requeridos Vacios</div>
+          <div *ngIf="getErrors()?.email">Formato de email Incorrecto</div>
         </div>
       </div>
       <div

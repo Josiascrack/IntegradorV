@@ -32,5 +32,12 @@
     [preload]="data"
   ></app-requisitosanexados>
 
-  <div class="rounded-lg shadow absolute right-2 bottom-2 z-10 bg-white px-4 py-2">{{ uploadStatus }} </div>
+  <div
+    class="rounded-lg animate-bounce shadow fixed right-2 bottom-2 z-10 bg-white px-2 py-2 flex flex-col"
+    *ngIf="isUploading"
+  >
+    <span class="font-bold text-sm">Subiendo Solicitud</span>
+    <span class="text-xs font-medium text-black/60">Esto puede tardar algunos segundos</span>
+
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <div
-  class="container-sm shadow-sm p-20 bg-body rounded mx-auto"
+  class="container-sm shadow-sm bg-body rounded mx-auto"
   style="width: 800px; height: auto"
 >
   <div class="row">
@@ -23,9 +23,8 @@
       </button>
     </div>
     <div *ngIf="selectedActividadesEconomicas.length == 0" class="p-4">
-      <div class=" blankDiv">
+      <div class="blankDiv">
         Seleccióne una actividad económica para poder ver giros.
-
       </div>
     </div>
     <div *ngIf="selectedActividadesEconomicas.length > 0">
@@ -46,7 +45,7 @@
             <td>
               <button
                 type="button"
-                class="btn btn-danger btn-sm"
+                class="btn btn-outline-danger btn-sm"
                 (click)="deleteSelected(gs.id_acteconomico)"
               >
                 <i class="fa-solid fa-trash"></i>

@@ -1,5 +1,5 @@
 <div
-  class="container-sm shadow-sm p-20 bg-body rounded mx-auto"
+  class="container-sm shadow-sm bg-body rounded mx-auto"
   style="width: 800px; height: auto"
 >
   <div class="row">
@@ -14,14 +14,8 @@
     <div class="col-12" style="background-color: rgb(255, 255, 255)">
       <form>
         <div class="row">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              padding-top: 8px;
-            "
-          >
-            <button
+          <div class="flex justify-between pt-4">
+            <!-- <button
               type="button"
               class="btn btn-indigo-600"
               style="color: white; background-color: #ab296a"
@@ -29,25 +23,17 @@
               data-bs-target="#exampleModal"
             >
               <i class="fa-solid fa-plus"></i> Documentación
-            </button>
+            </button> -->
 
-            <div>
-              <button
-                type="button"
-                class="btn btn-primary"
-                style="margin-right: 4px"
-              >
+            <!-- <div class="space-x-2">
+              <button type="button" class="btn btn-outline-primary">
                 Anexo 02
               </button>
 
-              <button
-                type="button"
-                class="btn btn-primary"
-                style="margin-left: 4px"
-              >
+              <button type="button" class="btn btn-outline-primary">
                 Declaración Jurada
               </button>
-            </div>
+            </div> -->
           </div>
           <!-- <div *ngIf="savedFiles.length == 0" class="p-4">
             <div class="blankDiv">Seleccione un archivo para continuar</div>
@@ -107,7 +93,6 @@
                       [for]="'upFile' + i"
                       class="btn btn-outline-success btn-sm"
                       *ngIf="!item.file"
-
                     >
                       <i class="fa-solid fa-upload"></i>
                     </label>
@@ -139,7 +124,11 @@
               padding-bottom: 8px;
             "
           >
-            <button type="button" class="btn btn-outline-danger" (click)="goHome()">
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="goHome()"
+            >
               Cancelar
             </button>
             <div>

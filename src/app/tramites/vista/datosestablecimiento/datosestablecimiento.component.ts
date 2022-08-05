@@ -39,7 +39,7 @@ export class DatosestablecimientoComponent implements OnInit {
     antiguedadEstablecimiento: new FormControl('', [Validators.required]),
     nomComercialEstablecimiento: new FormControl('', [Validators.required]),
     nEmpleadosEstablecimiento: new FormControl('', [Validators.required]),
-    referenciaEstablecimiento: new FormControl('', [Validators.required]),
+    referenciaEstablecimiento: new FormControl('', []),
     nPisosEstablecimiento: new FormControl('', [Validators.required]),
   });
   ngOnInit(): void {
