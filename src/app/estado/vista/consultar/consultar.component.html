@@ -6,7 +6,7 @@
 </div>
 
 <div
-  class="container-sm shadow-sm p-20 mb-5 bg-body rounded m-5 mx-auto"
+  class="container-sm shadow-sm mb-5 bg-body rounded m-5 mx-auto"
   style="max-width: 800px; height: auto"
 >
   <div class="row">
@@ -35,7 +35,9 @@
       </button>
     </div>
     <div *ngIf="solicitudes.length == 0" class="p-4">
-      <div class="blankDiv " [ngClass]="isSearching ? 'animate-bounce' :''">Busque un Codigo para consultar su estado.</div>
+      <div class="blankDiv" [ngClass]="isSearching ? 'animate-bounce' : ''">
+        Busque un Codigo para consultar su estado.
+      </div>
     </div>
     <div class="table-responsive" *ngIf="solicitudes.length > 0">
       <table class="table">
@@ -50,10 +52,24 @@
         <tbody>
           <tr *ngFor="let s of solicitudes; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ s.tipotramite }}</td>
+            <td>{{ tipoTramite[s.tipotramite] }}</td>
             <td>{{ s.nombre }}</td>
             <td>
-              <button *ngIf="s.id_solestado==3" class="rounded shadow bg-green-600 text-white w-8 h-8" (click)="goToUpload()"><i class="fa-solid fa-upload"></i></button>
+              <button
+                *ngIf="s.id_solestado == 0"
+                class="rounded shadow bg-yellow-600 text-white w-8 h-8"
+                (click)="showMotivo(i)"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+
+              <button
+                *ngIf="s.id_solestado == 3"
+                class="rounded shadow bg-green-600 text-white w-8 h-8"
+                (click)="goToUpload()"
+              >
+                <i class="fa-solid fa-upload"></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -69,5 +85,18 @@
         Volver a la Pagina de inicio
       </button>
     </div>
+  </div>
+</div>
+
+<div
+  *ngIf="isMotivoOpen"
+  class="h-screen w-screen bg-black/20 flex items-center justify-center fixed top-0 left-0"
+>
+  <div class="bg-white rounded-lg shadow p-4 relative">
+    <button class="absolute top-0 right-2" (click)="isMotivoOpen = false">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <span class="font-bold text-2xl">Motivo</span>
+    <p>{{ motivo }}</p>
   </div>
 </div>

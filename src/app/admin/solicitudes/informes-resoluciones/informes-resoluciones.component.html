@@ -5,6 +5,7 @@
     </div>
     <div class="col">
       <input
+        [(ngModel)]="searchRUC"
         class="form-control me-2"
         type="search"
         placeholder="Busqueda por RUC"
@@ -34,7 +35,7 @@
         <tbody>
           <tr *ngFor="let item of solicitudes | search: 'ruc':searchRUC">
             <td>{{ item.ruc }}</td>
-            <td>{{ tipoT[item.tipotramite]  }}</td>
+            <td>{{ tipoT[item.tipotramite] }}</td>
             <td>{{ item.razon_social }}</td>
             <td>{{ item.reg_tributario }}</td>
             <td>{{ item.tipo_predio }}</td>

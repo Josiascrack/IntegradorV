@@ -217,7 +217,7 @@
 </div>
 <app-rechazar-solicitud
   [id_solicitud]="solicitud.id_solicitud"
-  (closed)="cerrarModal()"
+  (closed)="cerrarRechazo($event)"
   *ngIf="isRechazarSolicitudOpen"
 >
 </app-rechazar-solicitud>

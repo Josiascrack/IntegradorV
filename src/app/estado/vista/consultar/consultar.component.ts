@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { ConsultasService } from 'src/app/servicios/consultas.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { ConsultasService } from 'src/app/servicios/consultas.service';
 })
 export class ConsultarComponent implements OnInit {
   solicitudes: any[] = [];
-
+  tipoTramite = TipoTramiteEnum;
   codigo: string = '';
   isSearching: boolean = false;
+  isMotivoOpen: boolean = false;
+  motivo: string = '';
   constructor(
     private router: Router,
     private consultasService: ConsultasService,
@@ -52,5 +55,10 @@ export class ConsultarComponent implements OnInit {
   goToUpload() {
     console.log(this.codigo);
     this.router.navigate(['/estado-tramite/detalles', this.codigo]);
+  }
+
+  showMotivo(ind: any) {
+    this.isMotivoOpen = true;
+    this.motivo = this.solicitudes[ind].motivo_rechazo;
   }
 }

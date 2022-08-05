@@ -65,4 +65,7 @@ export class InformacionSolicitudComponent implements OnInit {
   cerrarPago(event: any) {
     event ? this.closeModal() : (this.isValidarPagoOpen = false);
   }
+  cerrarRechazo(event: any) {
+    event ? this.closeModal() : (this.isRechazarSolicitudOpen = false);
+  }
 }

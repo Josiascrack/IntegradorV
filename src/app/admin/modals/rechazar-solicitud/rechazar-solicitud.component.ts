@@ -9,7 +9,7 @@ import { AdminService } from 'src/app/servicios/admin.service';
   styleUrls: ['./rechazar-solicitud.component.css'],
 })
 export class RechazarSolicitudComponent implements OnInit {
-  @Output() closed: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closed: EventEmitter<boolean> = new EventEmitter<boolean>();
   isSavingUser: boolean = false;
   @Input() id_solicitud?: number;
   rechazoForm = new FormGroup({
@@ -21,8 +21,8 @@ export class RechazarSolicitudComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  closeModal() {
-    this.closed.emit();
+  closeModal(value: boolean) {
+    this.closed.emit(value);
   }
   onSubmit() {
     if (
@@ -30,19 +30,18 @@ export class RechazarSolicitudComponent implements OnInit {
       this.rechazoForm.value.motivo.length > 0
     ) {
       this.isSavingUser = true;
-      this.rechazoForm.disable()
+      this.rechazoForm.disable();
 
       return this.adminService
         .rechazarSolicitud(this.id_solicitud, this.rechazoForm.value.motivo)
         .subscribe((data) => {
-          this.rechazoForm.enable()
+          this.rechazoForm.enable();
 
           this.isSavingUser = false;
           this.toast.success('Solicitud rechazada con éxito');
-          this.closeModal();
+          this.closeModal(true);
         });
     }
-    console.log(this.rechazoForm.value.motivo)
     return this.toast.error('Debe llenar todos los campos');
   }
 }
