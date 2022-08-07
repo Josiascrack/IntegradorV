@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class TipoTramiteDTO {\n  constructor(tipoTramite) {\n    this.tipoLicencia = tipoTramite.tipoLicencia || '';\n    this.tipoTramite = tipoTramite.tipoTramite || '';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
