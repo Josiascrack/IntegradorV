@@ -25,6 +25,7 @@ export class DashboardHeaderComponent implements OnInit {
     this.authService.logOut().subscribe((data) => {
       this.router.navigate(['/login']);
     });
+    this.authService.modules = [];
   }
   getUser() {
     this.authService.getProfile().subscribe((data) => {
