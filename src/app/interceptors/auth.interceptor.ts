@@ -7,8 +7,8 @@ import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { AuthService } from '../servicios/auth.service';
 import { apiURL } from '../servicios/global';
 import { ToastrService } from 'ngx-toastr';
@@ -17,30 +17,28 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;
+  private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
+    null
+  );
   constructor(
     private authService: AuthService,
     private http: HttpClient,
     private toast: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   intercept(
-    request: HttpRequest<unknown>,
+    request: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      catchError((err:any) => {
+      catchError((err: any) => {
         if (
           err instanceof HttpErrorResponse &&
-          !request.url.includes('auth/login')
+          !request.url.includes('auth/login') &&
+          err.status === 401
         ) {
-          if (err.status === 401) {
-            console.log('getoutted');
-            return this.authService.logOut().pipe(switchMap((data:any) => {
-              this.router.navigate(["/login"])
-              return next.handle(request);
-            }));
-          }
+          return this.handlingRefresh(request, next);
         }
 
         return throwError(err);
@@ -48,20 +46,24 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  handleRefresh(request: HttpRequest<any>, next: HttpHandler) {
-    console.log('you just got there');
-    return this.authService.getRefresh().pipe(
-      switchMap((data:any) => {
-        console.log('refresh data', data);
-        return next.handle(request);
-      }),
-      catchError((err:any) => {
-        this.isRefreshing = false;
-        this.authService.logOut().subscribe((e) => {
-          this.toast.error('Unauthorized');
-        });
-        return throwError(err);
-      })
-    );
+  private handlingRefresh(request: HttpRequest<unknown>, next: HttpHandler) {
+    if (!this.isRefreshing) {
+      this.isRefreshing = true;
+      this.refreshTokenSubject.next(null);
+
+      return this.authService.getRefresh().pipe(
+        switchMap((hola: any) => {
+          this.isRefreshing = false;
+          this.refreshTokenSubject.next(true);
+          return next.handle(request);
+        })
+      );
+    } else {
+      return this.refreshTokenSubject.pipe(
+        switchMap(() => {
+          return next.handle(request);
+        })
+      );
+    }
   }
 }

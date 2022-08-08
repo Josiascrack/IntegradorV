@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TipoTramiteDTO } from '../../models/tipoTramite';
 
 @Component({
-  selector: 'app-tipo-tramite',
+  selector: 'tipo-tramite',
   templateUrl: './tipo-tramite.component.html',
   styleUrls: ['./tipo-tramite.component.css'],
 })

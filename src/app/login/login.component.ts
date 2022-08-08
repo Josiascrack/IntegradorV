@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginService.logIn(this.loginForm.value).subscribe(
       (data: any) => {
         console.log(data);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/dashboard']);
       },
       (err) => {
         this.toastr.error(err.error.message, 'Error');

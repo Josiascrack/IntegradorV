@@ -6,38 +6,39 @@
 </div>
 
 <div class="pt-4" style="padding-bottom: 80px">
-  <app-tipo-tramite
+  <tipo-tramite
     (getSubmit)="childItems($event)"
     *ngIf="activeMenu == 1"
     [preload]="data"
-  ></app-tipo-tramite>
-  <app-datossolicitante
+  ></tipo-tramite>
+  <app-solicitante
     (getSubmit)="childItems($event)"
     *ngIf="activeMenu == 2"
     [preload]="data"
-  ></app-datossolicitante>
-  <app-datosestablecimiento
+  ></app-solicitante>
+  <app-establecimiento
     (getSubmit)="childItems($event)"
     *ngIf="activeMenu == 3"
     [preload]="data"
-  ></app-datosestablecimiento>
-  <app-actividadeseconomicas
+  ></app-establecimiento>
+  <actividades-economicas
     (getSubmit)="childItems($event)"
     *ngIf="activeMenu == 4"
     [preload]="data"
-  ></app-actividadeseconomicas>
-  <app-requisitosanexados
+  ></actividades-economicas>
+  <requisitos-anexados
     (getSubmit)="childItems($event)"
     *ngIf="activeMenu == 5"
     [preload]="data"
-  ></app-requisitosanexados>
+  ></requisitos-anexados>
 
   <div
     class="rounded-lg animate-bounce shadow fixed right-2 bottom-2 z-10 bg-white px-2 py-2 flex flex-col"
     *ngIf="isUploading"
   >
     <span class="font-bold text-sm">Subiendo Solicitud</span>
-    <span class="text-xs font-medium text-black/60">Esto puede tardar algunos segundos</span>
-
+    <span class="text-xs font-medium text-black/60"
+      >Esto puede tardar algunos segundos</span
+    >
   </div>
 </div>

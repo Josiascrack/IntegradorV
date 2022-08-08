@@ -1,0 +1,44 @@
+<div>
+  <div class="row align-items-start">
+    <div class="col">
+      <h2 class="text-2xl font-bold">Mantenimiento Rol</h2>
+    </div>
+    <div class="col">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Busqueda por ID"
+        aria-label="Search"
+        [(ngModel)]="searchedString"
+      />
+    </div>
+  </div>
+  <div *ngIf="roles.length == 0" class="p-4">
+    <div class="blankDiv">No hay Registros Disponibles, Vuelva Mas Tarde</div>
+  </div>
+  <div class="table-responsive" *ngIf="roles.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID-Rol</th>
+          <th scope="col">Nombres y Apellidos</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of roles | search: 'nombre':searchedString">
+          <td>{{ r.id_rol }}</td>
+          <td>{{ r.nombre }}</td>
+          <td class="space-x-4">
+            <button type="button" class="btn btn-outline-success">
+              Editar
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
