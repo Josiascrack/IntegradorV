@@ -29,6 +29,8 @@ export class DashboardHeaderComponent implements OnInit {
   }
   getUser() {
     this.authService.getProfile().subscribe((data) => {
+      console.log(data)
+
       this.user = data;
     });
   }

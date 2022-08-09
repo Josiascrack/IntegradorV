@@ -17,9 +17,12 @@
       class="bg-white absolute rounded shadow right-0 px-2 py-2 w-48"
       *ngIf="dropIsShowed"
     >
-      <ul>
+      <ul class="divide-y">
+        <li class="px-2 cursor-pointer">
+          Rol: <span class="uppercase">{{ user?.role }}</span>
+        </li>
         <li class="hover:bg-gray-200 px-2 cursor-pointer" (click)="logOut()">
-          Cerrar Session
+          Cerrar Sesión
         </li>
       </ul>
     </div>

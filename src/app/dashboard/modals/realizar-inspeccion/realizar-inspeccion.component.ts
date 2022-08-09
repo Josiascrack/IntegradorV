@@ -39,7 +39,7 @@ export class RealizarInspeccionComponent implements OnInit {
         inspeccion: this.file,
       })
       .subscribe((data) => {
-        this.toast.success('Licencia generada con éxito');
+        this.toast.success('Solicitud Inspeccionada con éxito');
         this.closeModal();
       });
   }
