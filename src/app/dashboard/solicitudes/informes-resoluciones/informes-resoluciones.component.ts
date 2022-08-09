@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
+import { TipoLicenciaEnum } from 'src/app/enums/tipo.licencia.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -11,7 +12,8 @@ import { AdminService } from 'src/app/servicios/admin.service';
 export class InformesResolucionesComponent implements OnInit {
   solicitudes: any[] = [];
   tipoT = TipoTramiteEnum;
-  regimenT = RegimenTributarioEnum
+  regimenT = RegimenTributarioEnum;
+  tipoL = TipoLicenciaEnum;
   searchRUC: string = '';
   selectedSolicitud: any;
   infoIsOpen = false;
@@ -23,6 +25,7 @@ export class InformesResolucionesComponent implements OnInit {
   }
   getData() {
     this.adminService.getSolicitudesPagadasValidadas().subscribe((data) => {
+      console.log(data)
       this.solicitudes = data;
     });
   }

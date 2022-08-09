@@ -23,6 +23,8 @@
         <thead>
           <tr>
             <th scope="col">RUC</th>
+            <th scope="col">Tipo Licencia</th>
+
             <th scope="col">Tipo Tramite</th>
             <th scope="col">Razon Social</th>
             <th scope="col">Regimen Tributario</th>
@@ -35,7 +37,9 @@
         <tbody>
           <tr *ngFor="let item of solicitudes | search: 'ruc':searchedString">
             <td>{{ item.ruc }}</td>
-            <td>{{ tipoT[item.tipotramite]  }}</td>
+            <td>{{ tipoL[item.tipolicencia] }}</td>
+
+            <td>{{ tipoT[item.tipotramite] }}</td>
             <td>{{ item.razon_social }}</td>
             <td>{{ regimenT[item.reg_tributario] }}</td>
             <td>{{ item.tipo_predio }}</td>
@@ -57,9 +61,8 @@
   </div>
 </div>
 
-
 <app-validar-pago-modal
-*ngIf="infoIsOpen"
-[codigo]="selectedSolicitud.codigo_solicitud"
-(closed)="closeModal()"
+  *ngIf="infoIsOpen"
+  [codigo]="selectedSolicitud.codigo_solicitud"
+  (closed)="closeModal()"
 ></app-validar-pago-modal>

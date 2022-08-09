@@ -23,6 +23,8 @@
         <thead>
           <tr>
             <th scope="col">RUC</th>
+            <th scope="col">Tipo Licencia</th>
+
             <th scope="col">Tipo Tramite</th>
             <th scope="col">Razon Social</th>
             <th scope="col">Regimen Tributario</th>
@@ -35,6 +37,8 @@
         <tbody>
           <tr *ngFor="let item of solicitudes | search: 'ruc':searchRUC">
             <td>{{ item.ruc }}</td>
+            <td>{{ tipoL[item.tipolicencia] }}</td>
+
             <td>{{ tipoT[item.tipotramite] }}</td>
             <td>{{ item.razon_social }}</td>
             <td>{{ regimenT[item.reg_tributario] }}</td>

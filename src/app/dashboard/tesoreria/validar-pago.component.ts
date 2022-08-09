@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegimenTributarioEnum } from 'src/app/enums/regimen.tributario.enum';
+import { TipoLicenciaEnum } from 'src/app/enums/tipo.licencia.enum';
 import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { AdminService } from 'src/app/servicios/admin.service';
 
@@ -13,6 +14,8 @@ export class ValidarPagoComponent implements OnInit {
   constructor(private adminService: AdminService) {}
   tipoT = TipoTramiteEnum;
   regimenT = RegimenTributarioEnum;
+  tipoL = TipoLicenciaEnum;
+
   selectedSolicitud: any;
   infoIsOpen = false;
   searchedString: string = '';
