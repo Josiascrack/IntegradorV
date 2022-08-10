@@ -11,6 +11,13 @@ export class UsuariosComponent implements OnInit {
   searchedString: string = '';
   users: any[] = [];
   roles: any[] = [];
+  selectedUser: any = {
+    id_usuario: 0,
+    usuario: '',
+    password: '',
+    repeatPassword: '',
+    id_rol: 0,
+  };
   isUserModalOpen: boolean = false;
   constructor(
     private adminService: AdminService,
@@ -22,7 +29,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   getRoleNameById(id: number) {
-    return this.roles.find((role) => role.id_rol === id).nombre;
+    return this.roles.find((role) => role.id_rol === id)?.nombre;
   }
 
   getUsers() {
@@ -42,6 +49,23 @@ export class UsuariosComponent implements OnInit {
   }
   closedModal() {
     this.isUserModalOpen = false;
+    this.selectedUser = {
+      id_usuario: 0,
+      usuario: '',
+      password: '',
+      repeatPassword: '',
+      id_rol: 0,
+    };
     this.getUsers();
+  }
+  openModal(idusario: number) {
+    console.log(idusario);
+    if (idusario != 0) {
+      this.selectedUser = this.users.find(
+        (user) => user.id_usuario === idusario
+      );
+    }
+    console.log(this.selectedUser);
+    this.isUserModalOpen = true;
   }
 }

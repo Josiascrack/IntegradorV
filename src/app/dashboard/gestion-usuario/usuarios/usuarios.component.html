@@ -5,7 +5,7 @@
     </div>
     <div class="col grid grid-cols-12 gap-4">
       <button
-        (click)="isUserModalOpen = true"
+        (click)="openModal(0)"
         type="button"
         class="btn btn-outline-secondary col-span-3"
       >
@@ -44,7 +44,11 @@
           <td>{{ u.usuario }}</td>
           <td>{{ getRoleNameById(u.id_rol) }}</td>
           <td class="space-x-5">
-            <button type="button" class="btn btn-outline-success">
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              (click)="openModal(u.id_usuario)"
+            >
               Editar
             </button>
             <button
@@ -63,6 +67,7 @@
 </div>
 
 <app-agregar-usuario
+  [selectedUser]="selectedUser"
   [roles]="roles"
   *ngIf="isUserModalOpen"
   (closed)="closedModal()"

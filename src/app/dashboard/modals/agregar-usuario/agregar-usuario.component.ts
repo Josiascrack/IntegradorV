@@ -18,6 +18,8 @@ import { EventEmitter } from '@angular/core';
 export class AgregarUsuarioComponent implements OnInit {
   @Input() roles: any[] = [];
   @Output() closed: EventEmitter<void> = new EventEmitter<void>();
+  @Input() selectedUser: any;
+
   isSavingUser: boolean = false;
   showPassword: boolean = false;
   showRepeatedPassword = false;
@@ -26,52 +28,46 @@ export class AgregarUsuarioComponent implements OnInit {
     private toast: ToastrService
   ) {}
 
-  userForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    firstPassword: new FormControl('', [Validators.required]),
-    lastPassword: new FormControl('', [Validators.required]),
-    idrol: new FormControl('', [Validators.required]),
-  });
   ngOnInit(): void {}
 
   onSubmit() {
-    if (!this.ifErrors()) {
-      if (
-        this.userForm.value.firstPassword! === this.userForm.value.lastPassword!
-      ) {
-        const { username, firstPassword, lastPassword, idrol } =
-          this.userForm.value;
+    console.log(this.selectedUser);
+    if (
+      this.selectedUser &&
+      this.selectedUser.password &&
+      this.selectedUser.repeatPassword &&
+      this.selectedUser.id_rol &&
+      this.selectedUser.password === this.selectedUser.repeatPassword
+    ) {
+      if (this.selectedUser.id_usuario == 0) {
+        this.isSavingUser = true;
         return this.adminService
-          .addUser({ username, password: firstPassword, idrol })
+          .addUser({
+            username: this.selectedUser.usuario,
+            password: this.selectedUser.password,
+            idrol: this.selectedUser.id_rol,
+          })
           .subscribe((data) => {
             this.toast.success('Usuario Registrado');
             this.closeModal();
           });
+      } else {
+        return this.adminService
+          .updateUser({
+            id_usuario: this.selectedUser.id_usuario,
+            usuario: this.selectedUser.usuario,
+            clave: this.selectedUser.password,
+            id_rol: this.selectedUser.id_rol,
+          })
+          .subscribe((data) => {
+            this.toast.success('Usuario Editado');
+            this.closeModal();
+          });
       }
-      return this.toast.error('Las contraseñas no coinciden');
     }
-    return this.toast.error('Debe llenar todos los campos');
+    return this.toast.error('Debe Cumplir todos los requisitos');
   }
-  ifErrors() {
-    if (
-      Object.keys(this.getErrors()!) &&
-      Object.keys(this.getErrors()!).length !== 0
-    ) {
-      return true;
-    }
-    return false;
-  }
-  getErrors() {
-    const errors = Object.keys(this.userForm.controls)
-      .map((key) => {
-        const controlErrors = this.userForm.get(key)!.errors;
-        return controlErrors;
-      })
-      .reduce((a, b) => {
-        return { ...a, ...b };
-      });
-    return errors;
-  }
+
   closeModal() {
     this.closed.emit();
   }
