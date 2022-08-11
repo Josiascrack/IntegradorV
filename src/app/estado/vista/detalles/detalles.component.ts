@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TipoTramiteEnum } from 'src/app/enums/tipo.tramite.enum';
 import { ConsultasService } from 'src/app/servicios/consultas.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class DetallesComponent implements OnInit {
   ) {}
   isUploadOpen: boolean = false;
   solicitud: any = {};
+  tipoT = TipoTramiteEnum
   ngOnInit(): void {
     console.log(this.router);
     this.aRoute.params.subscribe((data) => {

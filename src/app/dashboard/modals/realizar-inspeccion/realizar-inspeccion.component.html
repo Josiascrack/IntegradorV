@@ -2,7 +2,7 @@
   class="w-screen h-screen bg-black fixed top-0 left-0 bg-opacity-10 flex items-center justify-center"
 >
   <div
-    class="rounded-lg shadow bg-white flex flex-col items-center px-8 space-y-4 py-4 relative"
+    class="rounded-lg shadow bg-white w-96 flex flex-col items-center px-8 space-y-4 py-4 relative"
   >
     <button
       class="w-6 h-6 rounded-full bg-gray-300 absolute right-2 top-2 text-white"
@@ -11,9 +11,9 @@
       <i class="fa-solid fa-xmark"></i>
     </button>
     <span class="font-bold text-2xl">Realizar Inspección</span>
-    <span class="font-bold text-2xl">{{solicitud.codigo_solicitud}}</span>
+    <span class="font-bold text-xs text-center">{{solicitud.razon_social}}</span>
 
-    <div class="formulario space-y-4">
+    <div class="formulario space-y-4 w-full">
    
       <div class="flex items-center space-x-4 justify-between">
         <label for="">Inspección: </label>
@@ -41,7 +41,7 @@
           type="text"
           name="nombre"
           id="nombre"
-          class="border focus:outline-none px-2 py-1 rounded-lg"
+          class="border focus:outline-none px-2 py-1 rounded-lg w-full"
           [(ngModel)]="comentario"
         ></textarea>
       </div>
