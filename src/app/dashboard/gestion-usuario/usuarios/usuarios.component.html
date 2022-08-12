@@ -1,24 +1,24 @@
-<div>
-  <div class="row align-items-start">
-    <div class="col">
-      <h2 class="text-2xl font-bold">Gestion de Usuarios</h2>
+<div class="space-y-2">
+  <div class="grid grid-col-2 gap-2 sm:gap-4">
+    <div class="col-span-2">
+      <h2 class="text-lg sm:text-2xl font-bold">Gestion de Usuarios</h2>
     </div>
-    <div class="col grid grid-cols-12 gap-4">
+    <div class="col-span-12 sm:col-span-3">
       <button
-        (click)="openModal(0)"
-        type="button"
-        class="btn btn-outline-secondary col-span-3"
-      >
-        + Usuario
-      </button>
-      <input
-        class="form-control col-span-9"
-        type="search"
-        placeholder="Busqueda por usuario"
-        aria-label="Search"
-        [(ngModel)]="searchedString"
-      />
+      (click)="openModal(0)"
+      type="button"
+      class="btn btn-outline-secondary "
+    >
+      + Usuario
+    </button>
     </div>
+    <input
+      class="form-control col-span-12 sm:col-span-9"
+      type="search"
+      placeholder="Busqueda por usuario"
+      aria-label="Search"
+      [(ngModel)]="searchedString"
+    />
   </div>
   <div *ngIf="users.length == 0" class="p-4">
     <div class="blankDiv">No hay Registros Disponibles, Vuelva Mas Tarde</div>
@@ -30,7 +30,7 @@
           <th scope="col">N°</th>
           <th scope="col">Nombre Usuario</th>
           <th scope="col">Nombre Rol</th>
-          <th scope="col">Opciones</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +43,7 @@
           <td>{{ i + 1 }}</td>
           <td>{{ u.usuario }}</td>
           <td>{{ getRoleNameById(u.id_rol) }}</td>
-          <td class="space-x-5">
+          <td class="space-x-4 whitespace-nowrap">
             <button
               type="button"
               class="btn btn-outline-success"

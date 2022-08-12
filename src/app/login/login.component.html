@@ -7,15 +7,21 @@
     background-repeat: no-repeat;
   "
 >
-  <div class="h-screen w-screen flex items-center justify-end pr-48">
-    <div class=" w-96 rounded-lg text-black" style="background-color: #0167a7">
-      <div class="relative pt-16 pb-4 px-8">
+  <div class="h-screen w-screen flex items-center justify-center px-4 lg:justify-end lg:pr-48">
+    <div class="w-96 rounded-lg text-black bg-cyan-600" >
+      <div class="relative pt-16 pb-4 px-4 sm:px-8">
         <div class="w-full flex justify-center">
-          <img
-            src="./assets/img/logomunicipalidad.png"
-            alt="logo"
-            class="absolute -top-16 w-32"
-          />
+          <div
+            class="absolute cursor-pointer bg-white -top-16 w-32 h-32 p-3 rounded-full hover:ring-4"
+            [routerLink]="['/']"
+            [routerLink]="['/']"
+          >
+            <img
+              src="./assets/img/logomunicipalidad.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </div>
         </div>
 
         <div class="text-center">
@@ -46,7 +52,11 @@
               formControlName="password"
               placeholder="Contraseña"
             />
-            <button type="button" (click)="isVisible = !isVisible" class="absolute right-2">
+            <button
+              type="button"
+              (click)="isVisible = !isVisible"
+              class="absolute right-2"
+            >
               <i
                 class="fa-solid"
                 [ngClass]="isVisible ? 'fa-eye-slash' : 'fa-eye'"
@@ -55,7 +65,7 @@
           </div>
 
           <div class="text-center">
-            <button class="btn btn-success btn-block fa-lg" type="submit">
+            <button class="bg-blue-800 font-medium w-full py-2 rounded text-white focus:ring-offset-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-inherit" type="submit">
               Iniciar
             </button>
           </div>

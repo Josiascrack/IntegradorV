@@ -1,11 +1,11 @@
-<div>
-  <div class="row align-items-start">
-    <div class="col">
-      <h2 class="text-2xl font-bold">Validar Pago</h2>
+<div class="space-y-2">
+  <div class="grid col-span-2 gap-2 sm:gap-4">
+    <div class="col-span-2">
+      <h2 class="text-lg sm:text-2xl font-bold">Validar Pago</h2>
     </div>
-    <div class="col">
+    <div class="col-span-2">
       <input
-        class="form-control me-2"
+        class="form-control"
         type="search"
         placeholder="Busqueda por RUC"
         aria-label="Search"
@@ -15,7 +15,7 @@
   </div>
 
   <div>
-    <div *ngIf="solicitudes.length == 0" class="p-4">
+    <div *ngIf="solicitudes.length == 0" class="pb-4">
       <div class="blankDiv">No hay Registros Disponibles, Vuelva Mas Tarde</div>
     </div>
     <div class="table-responsive" *ngIf="solicitudes.length > 0">

@@ -1,9 +1,9 @@
-<div>
-  <div class="row align-items-start">
-    <div class="col">
-      <h2 class="text-2xl font-bold">Emisión de Informes y Resoluciones</h2>
+<div class="space-y-2">
+  <div class="grid grid-cols-2 gap-2 md:gap-4 align-items-start">
+    <div class="col-span-2 sm:col-span-1">
+      <h2 class="text-lg sm:text-2xl font-bold">Emisión de Informes y Resoluciones</h2>
     </div>
-    <div class="col">
+    <div class="col-span-2 sm:col-span-1">
       <input
         [(ngModel)]="searchRUC"
         class="form-control me-2"
@@ -15,7 +15,7 @@
   </div>
 
   <div>
-    <div *ngIf="solicitudes.length == 0" class="p-4">
+    <div *ngIf="solicitudes.length == 0" class=" pb-4 sm:p-4">
       <div class="blankDiv">No hay Registros Disponibles, Vuelva Mas Tarde</div>
     </div>
     <div class="table-responsive" *ngIf="solicitudes.length > 0">
