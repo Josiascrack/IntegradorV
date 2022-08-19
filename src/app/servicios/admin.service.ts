@@ -15,8 +15,25 @@ export class AdminService {
   getRoles(): Observable<any> {
     return this.http.get<any>(`${apiURL}/users/roles`);
   }
+  createRole(rol: string, accesos: any[]): Observable<any> {
+    return this.http.post<any>(`${apiURL}/users/roles`, {
+      rol,
+      accesos,
+    });
+  }
+  deleteRole(id: number): Observable<any> {
+    return this.http.delete<any>(`${apiURL}/users/roles/${id}`);
+  }
   addUser(user: any): Observable<any> {
     return this.http.post<any>(`${apiURL}/users/user`, user);
+  }
+
+  getAllAccess(): Observable<any> {
+    return this.http.get<any>(`${apiURL}/users/access/all`);
+  }
+
+  getAccessById(id: number) {
+    return this.http.get<any>(`${apiURL}/users/access/unique/${id}`);
   }
 
   getSolicitudesRegistradas(): Observable<any> {

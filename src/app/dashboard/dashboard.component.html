@@ -1,10 +1,8 @@
-<div
-  class="pt-24 px-4 sm:px-8 overflow-y-auto "
-  [ngClass]="sideIsOpen ? ' sm:pl-64' : ''"
->
-  <router-outlet></router-outlet>
+<div [ngClass]="sideIsOpen ? 'pl-0 md:pl-64' : ''">
+  <div class="pt-24 px-4 md:px-8 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+
 <dashboard-sidebar [sidebarIsOpen]="sideIsOpen"></dashboard-sidebar>
 <dashboard-header (toggleEvent)="isToggled()"></dashboard-header>
-
-

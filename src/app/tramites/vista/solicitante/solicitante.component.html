@@ -1,36 +1,29 @@
-<div
-  class="container-sm shadow-sm bg-body rounded mx-auto"
-  style="width: 1500px; height: auto"
->
-  <div class="row">
-    <div
-      class="col-12 fs-5 bd-highlight"
-      style="background-color: #0167a7; color: white"
-    >
-      2. Datos del Solicitante
-    </div>
+<div class="shadow rounded mx-auto" style="max-width: 1500px; height: auto">
+  <div
+    class="text-white px-2 py-1 rounded-t font-medium"
+    style="background-color: #0167a7"
+  >
+    2. Datos Solicitante
   </div>
-  <div class="row">
-    <div class="col-12" style="background-color: rgb(255, 255, 255)">
-      <form [formGroup]="solicitanteForm" (ngSubmit)="goNext()">
-        <div class="row">
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label">N° RUC</label>
-            <div class="input-group">
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                formControlName="ruc"
-              />
-              <button type="button" class="btn btn-info" (click)="searchRUC()">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-          </div>
+  <form [formGroup]="solicitanteForm" (ngSubmit)="goNext()">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+      <div>
+        <label for="exampleInputEmail1" class="form-label">N° RUC</label>
+        <div class="input-group">
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            formControlName="ruc"
+          />
+          <button type="button" class="btn btn-info" (click)="searchRUC()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
 
-          <!-- <div class="col-4">
+      <!-- <div class="col-4">
             <label for="exampleInputEmail1" class="form-label">Captcha</label>
             <input
               type="email"
@@ -41,192 +34,181 @@
             />
           </div> -->
 
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Razón Social <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="razonSocial"
-            />
-          </div>
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Dirección <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="direccion"
-            />
-          </div>
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Departamento <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="departamento"
-            />
-          </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Razón Social <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="razonSocial"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Dirección <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="direccion"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Departamento <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="departamento"
+        />
+      </div>
 
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Provincia <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="provincia"
-            />
-          </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Provincia <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="provincia"
+        />
+      </div>
 
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Distrito <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="distrito"
-            />
-          </div>
-          <div class="col-4">
-            <label for="disabledSelect" class="form-label"
-              >Tipo de Contribuyente <span class="text-red-600">*</span></label
-            >
-            <select
-              id="disabledSelect"
-              class="form-select"
-              formControlName="tipoContribuyente"
-            >
-              <option value="" selected>--Seleccionar--</option>
-              <option value="1">Persona Juridica</option>
-              <option value="2">Persona Natural</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <label for="disabledSelect" class="form-label"
-              >Régimen Tributario <span class="text-red-600">*</span></label
-            >
-            <select
-              id="disabledSelect"
-              class="form-select"
-              formControlName="regimenTributario"
-            >
-              <option value="">--Seleccionar--</option>
-              <option value="1">Régimen General (REG)</option>
-              <option value="2">Régimen Especial de Renta (RER)</option>
-              <option value="3">Régimen MYPE Tributario</option>
-              <option value="4">Nuevo RUS</option>
-            </select>
-          </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Distrito <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="distrito"
+        />
+      </div>
+      <div>
+        <label for="disabledSelect" class="form-label"
+          >Tipo de Contribuyente <span class="text-red-600">*</span></label
+        >
+        <select
+          id="disabledSelect"
+          class="form-select"
+          formControlName="tipoContribuyente"
+        >
+          <option value="" selected>--Seleccionar--</option>
+          <option value="1">Persona Juridica</option>
+          <option value="2">Persona Natural</option>
+        </select>
+      </div>
+      <div>
+        <label for="disabledSelect" class="form-label"
+          >Régimen Tributario <span class="text-red-600">*</span></label
+        >
+        <select
+          id="disabledSelect"
+          class="form-select"
+          formControlName="regimenTributario"
+        >
+          <option value="">--Seleccionar--</option>
+          <option value="1">Régimen General (REG)</option>
+          <option value="2">Régimen Especial de Renta (RER)</option>
+          <option value="3">Régimen MYPE Tributario</option>
+          <option value="4">Nuevo RUS</option>
+        </select>
+      </div>
 
-          <div class="col-4">
-            <label for="disabledSelect" class="form-label"
-              >Distrito de Notificación
-              <span class="text-red-600">*</span></label
-            >
-            <select
-              id="disabledSelect"
-              class="form-select"
-              formControlName="distritoNotificacion"
-            >
-              <option value="" selected>--Seleccionar--</option>
-              <option *ngFor="let l of limaDistricts" [value]="l">
-                {{ l }}
-              </option>
-            </select>
-          </div>
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Dirección de Notificación
-              <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="direccionNotificacion"
-            />
-          </div>
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >Correo Electrónico <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="email"
-            />
-          </div>
-          <div class="col-4">
-            <label for="exampleInputEmail1" class="form-label"
-              >N° Celular <span class="text-red-600">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              formControlName="telefono"
-            />
-          </div>
-          <div class="errors px-2" *ngIf="ifErrors()">
-            <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg my-3">
-              <div *ngIf="getErrors()?.required">Valores Requeridos Vacios</div>
-              <div *ngIf="getErrors()?.email">Formato de email Incorrecto</div>
-              <div *ngIf="getErrors()?.phoneNumber">
-                Formato de numero telefonico Incorrecto
-              </div>
-            </div>
-          </div>
-          <div
-            class="mb-2 mt-2"
-            style="display: flex; justify-content: space-between"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-danger"
-              (click)="goHome()"
-            >
-              Cancelar
-            </button>
-            <div>
-              <button
-                type="button"
-                class="btn btn-outline-info"
-                style="margin-right: 4px"
-                (click)="goBack()"
-              >
-                Atras
-              </button>
-              <button
-                type="submit"
-                class="btn btn-outline-success"
-                style="margin-left: 4px"
-              >
-                Siguiente
-              </button>
-            </div>
+      <div>
+        <label for="disabledSelect" class="form-label"
+          >Distrito de Notificación <span class="text-red-600">*</span></label
+        >
+        <select
+          id="disabledSelect"
+          class="form-select"
+          formControlName="distritoNotificacion"
+        >
+          <option value="" selected>--Seleccionar--</option>
+          <option *ngFor="let l of limaDistricts" [value]="l">
+            {{ l }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Dirección de Notificación <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="direccionNotificacion"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >Correo Electrónico <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="email"
+        />
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label"
+          >N° Celular <span class="text-red-600">*</span></label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="telefono"
+        />
+      </div>
+      <div class="errors" *ngIf="ifErrors()">
+        <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg my-3">
+          <div *ngIf="getErrors()?.required">Valores Requeridos Vacios</div>
+          <div *ngIf="getErrors()?.email">Formato de email Incorrecto</div>
+          <div *ngIf="getErrors()?.phoneNumber">
+            Formato de numero telefonico Incorrecto
           </div>
         </div>
-      </form>
+      </div>
+      <div class="flex justify-between lg:col-span-3">
+        <button type="button" class="btn btn-outline-danger" (click)="goHome()">
+          Cancelar
+        </button>
+        <div>
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            style="margin-right: 4px"
+            (click)="goBack()"
+          >
+            Atras
+          </button>
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            style="margin-left: 4px"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
+  </form>
 </div>

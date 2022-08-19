@@ -1,23 +1,18 @@
-<div
-  class="container-sm shadow-sm bg-body rounded mx-auto"
-  style="width: 800px; height: auto"
->
-  <div class="row">
-    <div
-      class="col-12 fs-5 bd-highlight"
-      style="background-color: #0167a7; color: white"
-    >
-      1. Tipo de Tramite
-    </div>
+<div class="shadow rounded mx-auto" style="max-width: 800px">
+  <div
+    class="text-white px-2 py-1 rounded-t font-medium"
+    style="background-color: #0167a7"
+  >
+    1. Tipo de Tramite
   </div>
 
   <form [formGroup]="tipoForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="mb-3">
+    <div class="grid p-4 gap-2">
+      <div>
         <label for="disabledSelect" class="form-label"
           >Tipo de Licencia de Funcionamiento
-          <span class="text-red-600">*</span></label
-        >
+          <span class="text-red-600">*</span>
+        </label>
         <select
           id="disabledSelect"
           class="form-select"
@@ -27,10 +22,9 @@
           <option value="" selected>Seleccionar</option>
           <option value="1">Indeterminada</option>
           <option value="2">Temporal</option>
-
         </select>
       </div>
-      <div class="mb-3">
+      <div>
         <label for="disabledSelect" class="form-label"
           >Tipo de Tramite <span class="text-red-600">*</span></label
         >
@@ -44,19 +38,13 @@
           <option value="1">Licencia de Funcionamiento</option>
         </select>
       </div>
-      <div class="errors px-2" *ngIf="ifErrors()">
-        <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg mb-3">
+      <div class="errors" *ngIf="ifErrors()">
+        <div class="bg-red-200 text-red-600 py-1 px-2 rounded-lg ">
           <div *ngIf="getErrors()?.required">Valores Requeridos Vacios</div>
           <div *ngIf="getErrors()?.email">Formato de email Incorrecto</div>
         </div>
       </div>
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          padding-bottom: 8px;
-        "
-      >
+      <div class="flex justify-between">
         <button type="button" class="btn btn-outline-danger" (click)="goHome()">
           Cancelar
         </button>
