@@ -20,12 +20,10 @@ export class InformesResolucionesComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    console.log(TipoTramiteEnum[1]);
     this.getData();
   }
   getData() {
     this.adminService.getSolicitudesPagadasValidadas().subscribe((data) => {
-      console.log(data)
       this.solicitudes = data;
     });
   }

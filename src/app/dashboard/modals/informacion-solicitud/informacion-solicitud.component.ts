@@ -18,14 +18,14 @@ export class InformacionSolicitudComponent implements OnInit {
   isRiesgoOpen: boolean = false;
   isValidarPagoOpen: boolean = false;
   isRechazarSolicitudOpen: boolean = false;
-  tipotramite=TipoTramiteEnum;
-  regimentributario=RegimenTributarioEnum;
-  tipocontribuyente=TipoContribuyenteEnum;
+  tipotramite = TipoTramiteEnum;
+  regimentributario = RegimenTributarioEnum;
+  tipocontribuyente = TipoContribuyenteEnum;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(this.solicitud);
+
   }
 
   closeModal() {

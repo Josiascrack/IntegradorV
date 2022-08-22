@@ -12,7 +12,7 @@ export class DashboardHeaderComponent implements OnInit {
   @Output() toggleEvent = new EventEmitter();
   @Input() dropIsShowed: boolean = false;
   user: any;
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -29,8 +29,6 @@ export class DashboardHeaderComponent implements OnInit {
   }
   getUser() {
     this.authService.getProfile().subscribe((data) => {
-      console.log(data)
-
       this.user = data;
     });
   }

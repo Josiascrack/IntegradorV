@@ -11,8 +11,6 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
   modules: any = [];
   logIn(user: any): Observable<any> {
-    console.log(user);
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + btoa(user.username + ':' + user.password),

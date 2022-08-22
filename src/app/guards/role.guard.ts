@@ -25,7 +25,6 @@ export class RoleGuard implements CanActivateChild {
     | Promise<boolean | UrlTree> {
     return this.authService.getModules().pipe(
       map((modules) => {
-        console.log(modules);
         if (!modules.map((m: any) => m.ruta).includes(childRoute.url[0].path)) {
           return this.router.parseUrl('/dashboard');
         }
