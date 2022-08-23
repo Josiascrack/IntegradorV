@@ -45,7 +45,7 @@
         <tbody>
           <tr *ngFor="let s of solicitudes; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ tipoTramite[s.tipotramite] }}</td>
+            <td>{{ tipoTramite[s.id_tipotramite] }}</td>
             <td>{{ s.nombre }}</td>
             <td>
               <button
