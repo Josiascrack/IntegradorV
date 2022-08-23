@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private toast: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -42,9 +42,15 @@ export class UsuariosComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    return this.adminService.deleteUser(id).subscribe((data) => {
-      this.getUsers();
-      this.toast.success('Usuario eliminado correctamente');
+    return this.adminService.deleteUser(id).subscribe({
+      next: (data) => {
+        this.getUsers();
+        this.toast.success('Usuario eliminado correctamente');
+      },
+      error:(err)=>{
+        this.toast.error('El usuario no puede ser eliminado');
+
+      }
     });
   }
   closedModal() {
